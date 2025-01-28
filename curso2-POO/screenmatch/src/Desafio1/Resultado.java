@@ -1,5 +1,9 @@
 package Desafio1;
 
+import Desafio2.CalculadoraSalaRetangular;
+import Desafio2.ConversorMoeda;
+import Desafio2.TabuadaMultiplicacao;
+
 public class Resultado {
     public static void main(String[] args) {
         Calculadora meuCalculo = new Calculadora();
@@ -43,6 +47,36 @@ public class Resultado {
         System.out.println("Idade: "+ idadePessoa.getIdade());
 
         idadePessoa.verificarIdade(idadePessoa.getIdade());
+
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
+
+        ConversorMoeda conversorMoeda = new ConversorMoeda(6.11);
+
+        double valorEmDolar = 100.0;
+        double valorEmReais = conversorMoeda.converterDolarParaReal(valorEmDolar);
+
+        System.out.println(valorEmReais);
+
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
+
+        CalculadoraSalaRetangular salaRetangular = new CalculadoraSalaRetangular();
+        double areaFinal = salaRetangular.calcularArea(3,5);
+        double perimetroFinal = salaRetangular.calcularPerimetro(3,5);
+
+        System.out.println(areaFinal);
+        System.out.println(perimetroFinal);
+
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------");
+
+        TabuadaMultiplicacao tabuadaMultiplicacao = new TabuadaMultiplicacao();
+        tabuadaMultiplicacao.mostrarTabuada(5);
 
     }
 }
