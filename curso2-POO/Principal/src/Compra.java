@@ -1,3 +1,5 @@
+package Principal.src;
+
 public class Compra implements Comparable<Compra> { // Implementa Comparable
     private String descricao;
     private double valor;
