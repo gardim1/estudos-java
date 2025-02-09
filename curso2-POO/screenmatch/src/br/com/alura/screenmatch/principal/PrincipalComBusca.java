@@ -20,28 +20,35 @@ public class PrincipalComBusca {
         System.out.println("Digite um filme para busca: ");
         var busca = leitura.nextLine();
         String endereco = "https://www.omdbapi.com/?t=" + busca + "&apikey=8b8785d3";
-
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endereco)).build();
-        //client.sendAsync(request, HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body).thenAccept(System.out::println).join();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-        String json = response.body();
-        System.out.println(json);
-
-        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
-        //Titulo meuTitulo = gson.fromJson(json, Titulo.class);
-        TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
-        System.out.println(meuTituloOmdb);
         try{
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(endereco)).build();
+            //client.sendAsync(request, HttpResponse.BodyHandlers.ofString()).thenApply(HttpResponse::body).thenAccept(System.out::println).join();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            String json = response.body();
+            System.out.println(json);
+
+            Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
+            //Titulo meuTitulo = gson.fromJson(json, Titulo.class);
+            TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+            System.out.println(meuTituloOmdb);
+            //try{
             Titulo meuTitulo = new Titulo(meuTituloOmdb);
             System.out.println("Titulo ja convertido");
             System.out.println(meuTitulo);
         }catch(NumberFormatException e ){
             System.out.println("Aconteceu um erro");
             System.out.println(e.getMessage());
+        }catch(IllegalArgumentException e){
+            System.out.println("Algum erro de argumento na busca, verifique o endereco");
+        }catch (Exception e){
+            System.out.println("Aconteceu algo, nao sei o que eh ");
         }
-        System.out.println("programa finalizado corretamente");
+        finally {
+            System.out.println("Programa finalizado corretamente");
+        }
+
 
 
     }
