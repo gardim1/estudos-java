@@ -5,5 +5,5 @@ out/
 *.class
 *.log
 
-filmes.txt
+*.txt
 titulos.json
