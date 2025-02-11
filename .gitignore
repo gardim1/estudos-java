@@ -4,3 +4,6 @@ out/
 
 *.class
 *.log
+
+filmes.txt
+titulos.txt
