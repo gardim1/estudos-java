@@ -6,4 +6,4 @@ out/
 *.log
 
 filmes.txt
-titulos.txt
+titulos.json
