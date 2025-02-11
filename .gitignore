@@ -6,4 +6,4 @@ out/
 *.log
 
 *.txt
-titulos.json
+*.json
